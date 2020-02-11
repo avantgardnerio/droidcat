@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 if [ $# -lt 1 ];then
 	echo "Usage: $0 apk-file"
 	exit 1
@@ -6,14 +7,15 @@ fi
 
 apkfile=$1
 
-ROOT=/home/hcai/
+ROOT=$HOME
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre/
 subjectloc=`pwd`
 
 OUTDIR=${2:-"$subjectloc/cg.instrumented/"}
 
-MAINCP="$ROOT/libs/rt.jar:$ROOT/libs/polyglot.jar:$ROOT/libs/soot-trunk.jar:$ROOT/workspace/duafdroid/bin:$ROOT/workspace/droidfax/bin:$ROOT/libs/java_cup.jar"
+MAINCP="$JAVA_HOME/lib/rt.jar:$ROOT/libs/polyglot.jar:$ROOT/libs/soot-trunk.jar:$ROOT/workspace/duafdroid/bin:$ROOT/workspace/droidfax/bin:$ROOT/libs/java_cup.jar"
 
-SOOTCP="$ROOT/workspace/droidfax/bin:/home/hcai/Android/Sdk/platforms/android-21/android.jar"
+SOOTCP="$ROOT/workspace/droidfax/bin:$ROOT/Android/Sdk/platforms/android-21/android.jar"
 
 for i in $ROOT/libs/*.jar;
 do
