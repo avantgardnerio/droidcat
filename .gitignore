@@ -6,3 +6,6 @@ ML/*.pyc
 
 # output
 out-dynInstr-cg/
+
+# IDE
+.idea/
